@@ -1,589 +1,551 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Brotherhood Continuum // A Dedication</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Brotherhood Continuum // A Dedication</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- GSAP Core & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- GSAP Core & ScrollTrigger CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <style>
-      /* ------------------------------------------------------------------
+  <style>
+    /* ------------------------------------------------------------------
        CSS CUSTOM PROPERTIES & RESET
     ------------------------------------------------------------------ */
-      :root {
-        --bg-light: #e5e5e5;
-        --bg-dark: #0a0a0a;
-        --text-dark: #111111;
-        --text-light: #f5f5f5;
-        --accent-gold: #d4af37;
+    :root {
+      --bg-light: #E5E5E5;
+      --bg-dark: #0A0A0A;
+      --text-dark: #111111;
+      --text-light: #F5F5F5;
+      --accent-gold: #D4AF37;
+      
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+    }
 
-        --font-display: "Syne", sans-serif;
-        --font-body: "Plus Jakarta Sans", sans-serif;
-        --font-serif: "Cormorant Garamond", serif;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+    html, body {
+      width: 100%;
+      overflow-x: hidden; /* Prevents unwanted horizontal shifting */
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-      body {
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        font-family: var(--font-body);
-        overflow-x: hidden;
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      /* ------------------------------------------------------------------
+    /* ------------------------------------------------------------------
        NAVIGATION HEADER
     ------------------------------------------------------------------ */
-      .brand-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 30px 4%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 100;
-        pointer-events: none;
-      }
+    .brand-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 24px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      pointer-events: none;
+    }
 
-      .brand-logo {
-        font-family: var(--font-display);
-        font-size: 0.9rem;
-        font-weight: 800;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: var(--text-dark);
-        mix-blend-mode: difference;
-      }
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      mix-blend-mode: difference;
+    }
 
-      .brand-meta {
-        font-family: var(--font-body);
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--text-dark);
-        mix-blend-mode: difference;
-      }
+    .brand-meta {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      mix-blend-mode: difference;
+    }
 
-      /* ------------------------------------------------------------------
+    /* ------------------------------------------------------------------
        SECTION 1: HERO VIEWPORT
     ------------------------------------------------------------------ */
-      .hero-sec {
-        position: relative;
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0 5%;
-        text-align: center;
-        z-index: 10;
-      }
+    .hero-sec {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 6%;
+      text-align: center;
+      z-index: 10;
+    }
 
-      .hero-title-wrapper {
-        overflow: hidden;
-        margin-bottom: 24px;
-      }
+    .hero-title-wrapper {
+      overflow: hidden;
+      margin-bottom: 24px;
+      width: 100%;
+    }
 
-      .hero-title {
-        font-family: var(--font-display);
-        font-size: clamp(2.3rem, 7vw, 5.2rem);
-        font-weight: 800;
-        line-height: 1.05;
-        letter-spacing: -2px;
-        text-transform: uppercase;
-        color: var(--text-dark);
-      }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 6.5vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+    }
 
-      .hero-title span {
-        display: inline-block;
-      }
+    .hero-title span {
+      display: inline-block;
+    }
 
-      .hero-subtitle {
-        font-family: var(--font-serif);
-        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-        font-style: italic;
-        font-weight: 400;
-        max-width: 750px;
-        color: #4a4a4a;
-        line-height: 1.5;
-      }
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2.2vw, 1.45rem);
+      font-style: italic;
+      font-weight: 400;
+      max-width: 680px;
+      color: #4a4a4a;
+      line-height: 1.5;
+    }
 
-      .scroll-indicator {
-        position: absolute;
-        bottom: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        font-size: 0.7rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: #666;
-      }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #666;
+    }
 
-      .scroll-indicator::after {
-        content: "";
-        width: 1px;
-        height: 60px;
-        background: linear-gradient(to bottom, #111 0%, transparent 100%);
-        animation: pulse-line 2.2s infinite ease-in-out;
-        transform-origin: top;
-      }
+    .scroll-indicator::after {
+      content: '';
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, #111 0%, transparent 100%);
+      animation: pulse-line 2.2s infinite ease-in-out;
+      transform-origin: top;
+    }
 
-      @keyframes pulse-line {
-        0% {
-          transform: scaleY(0);
-          transform-origin: top;
-        }
-        50% {
-          transform: scaleY(1);
-          transform-origin: top;
-        }
-        50.1% {
-          transform-origin: bottom;
-        }
-        100% {
-          transform: scaleY(0);
-          transform-origin: bottom;
-        }
-      }
+    @keyframes pulse-line {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      50.1% { transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
 
-      /* ------------------------------------------------------------------
+    /* ------------------------------------------------------------------
        SECTION 2: STICKY VISUAL ARENA
     ------------------------------------------------------------------ */
-      .visual-sec {
-        position: relative;
-        width: 100%;
-        height: 400vh; /* Expanded height to accommodate three sequential cards */
-        background: transparent;
-      }
+    .visual-sec {
+      position: relative;
+      width: 100%;
+      height: 400vh;
+      background: transparent;
+      overflow: hidden;
+    }
 
-      .sticky-wrapper {
-        position: sticky;
-        top: 0;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
+    .sticky-wrapper {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-      /* Spatial Depth Controls */
-      .perspective-parent {
-        perspective: 2000px;
-        transform-style: preserve-3d;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 40px;
-        position: relative;
-      }
+    .perspective-parent {
+      perspective: 1800px;
+      transform-style: preserve-3d;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
 
-      /* 3D Target Containers */
-      .image-3d-card {
-        position: absolute; /* Stacked directly over one another */
-        width: 85%;
-        max-width: 500px;
-        aspect-ratio: 4 / 5;
-        transform-style: preserve-3d;
-        will-change: transform, opacity;
-        backface-visibility: hidden;
-        border-radius: 12px;
-        box-shadow: 0 40px 90px rgba(0, 0, 0, 0.18);
-      }
+    /* Absolute centering coordinates that bypass mobile Flexbox bugs */
+    .image-3d-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 82%;
+      max-width: 440px;
+      aspect-ratio: 4 / 5;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18);
+    }
 
-      .image-3d-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-        display: block;
-      }
+    .image-3d-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
 
-      /* Cinematic backing shadow matching gold colors */
-      .image-3d-card::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        border-radius: 14px;
-        background: linear-gradient(135deg, var(--accent-gold) 0%, #111 100%);
-        z-index: -1;
-        opacity: 0.35;
-        transform: translateZ(-10px);
-      }
+    /* Cinematic backing shadow matching gold colors */
+    .image-3d-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #111 100%);
+      z-index: -1;
+      opacity: 0.35;
+      transform: translateZ(-10px);
+    }
 
-      .image-3d-card::after {
-        content: "";
-        position: absolute;
-        inset: -30px;
-        background: radial-gradient(
-          circle,
-          rgba(212, 175, 55, 0.1) 0%,
-          transparent 70%
-        );
-        z-index: -2;
-        transform: translateZ(-30px);
-        pointer-events: none;
-      }
+    .image-3d-card::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+      z-index: -2;
+      transform: translateZ(-30px);
+      pointer-events: none;
+    }
 
-      /* Active State Tracker (Corner Tag) */
-      .card-indicator {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        background: rgba(17, 17, 17, 0.85);
-        -webkit-backdrop-filter: blur(8px);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-family: var(--font-display);
-        font-size: 0.7rem;
-        letter-spacing: 2px;
-        color: var(--accent-gold);
-      }
+    /* Active State Tracker (Corner Tag) */
+    .card-indicator {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(17, 17, 17, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+    }
 
-      /* ------------------------------------------------------------------
+    /* ------------------------------------------------------------------
        SECTION 3: MESSAGE REVEAL BLOCK
     ------------------------------------------------------------------ */
-      .message-sec {
-        position: relative;
-        min-height: 110vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 120px 8%;
-        z-index: 15;
-      }
+    .message-sec {
+      position: relative;
+      min-height: 110vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 6%;
+      z-index: 15;
+    }
 
-      .message-content {
-        max-width: 850px;
-        width: 100%;
-        text-align: center;
-      }
+    .message-content {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
 
-      .message-headline {
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 800;
-        color: var(--accent-gold);
-        line-height: 1.1;
-        letter-spacing: -1px;
-        text-transform: uppercase;
-        margin-bottom: 3rem;
-      }
+    .message-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      color: var(--accent-gold);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
 
-      .message-body {
-        font-family: var(--font-body);
-        font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-        line-height: 1.9;
-        font-weight: 300;
-        color: #e0e0e0;
-      }
+    .message-body {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      line-height: 1.85;
+      font-weight: 300;
+      color: #E0E0E0;
+    }
 
-      .message-body p {
-        margin-bottom: 2.2rem;
-      }
+    .message-body p {
+      margin-bottom: 2rem;
+    }
 
-      .message-body strong {
-        font-weight: 600;
-        color: #ffffff;
-      }
+    .message-body strong {
+      font-weight: 600;
+      color: #FFFFFF;
+    }
 
-      .message-signoff {
-        margin-top: 5rem;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    .message-signoff {
+      margin-top: 4rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-      .signoff-tag {
-        font-family: var(--font-body);
-        font-size: 0.75rem;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.4);
-        margin-bottom: 0.8rem;
-      }
+    .signoff-tag {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 0.8rem;
+    }
 
-      .signoff-signature {
-        font-family: var(--font-serif);
-        font-size: clamp(2.2rem, 5vw, 3.5rem);
-        font-style: italic;
-        color: var(--accent-gold);
-        font-weight: 400;
-      }
+    .signoff-signature {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-style: italic;
+      color: var(--accent-gold);
+      font-weight: 400;
+    }
 
-      /* ------------------------------------------------------------------
+    /* ------------------------------------------------------------------
        DECORATIVE ASSETS
     ------------------------------------------------------------------ */
-      .gold-divider {
-        width: 60px;
-        height: 2px;
-        background-color: var(--accent-gold);
-        margin: 2.5rem auto;
-      }
+    .gold-divider {
+      width: 60px;
+      height: 2px;
+      background-color: var(--accent-gold);
+      margin: 2rem auto;
+    }
 
-      /* ------------------------------------------------------------------
+    /* ------------------------------------------------------------------
        RESPONSIVE ADJUSTMENTS
     ------------------------------------------------------------------ */
-      @media (max-width: 768px) {
-        .image-3d-card {
-          max-width: 380px;
-        }
-        .brand-header {
-          padding: 20px 5%;
-        }
-        .message-headline {
-          margin-bottom: 2.5rem;
-        }
+    @media (max-width: 480px) {
+      .image-3d-card {
+        width: 85%;
+        max-width: 310px;
       }
-    </style>
-  </head>
-  <body>
-    <!-- Premium Minimal Header -->
-    <header class="brand-header">
-      <div class="brand-logo">HAPPY BIRTHDAY HEROES</div>
-    </header>
+      .brand-header {
+        padding: 16px 6%;
+      }
+      .message-sec {
+        padding: 80px 6%;
+      }
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Section 1: Hero presentation -->
-    <section class="hero-sec">
-      <div class="hero-title-wrapper">
-        <h1 class="hero-title">
-          <span>Double the Brilliance.</span><br />
-          <span>Double the Impact.</span>
-        </h1>
-      </div>
-      <p class="hero-subtitle">
-        A celebration of character, exceptional family lineage, and the
-        unshakeable bond shared between brothers.
-      </p>
-      <div class="scroll-indicator">
-        <span>Scroll Down</span>
-      </div>
-    </section>
+  <!-- Premium Minimal Header -->
+  <header class="brand-header">
+    <div class="brand-logo">N_02_PORTRAIT</div>
+    <div class="brand-meta">EDITION // GALLERY</div>
+  </header>
 
-    <!-- Section 2: Sticky Visual Arena (Handles 3D transition of 3 images) -->
-    <section class="visual-sec">
-      <div class="sticky-wrapper">
-        <div class="perspective-parent">
-          <!-- Picture 1 -->
-          <div class="image-3d-card card-1">
-            <img src="image_1.jpg" alt="Dynamic Portrait One" />
-            <div class="card-indicator">I // III</div>
-          </div>
+  <!-- Section 1: Hero presentation -->
+  <section class="hero-sec">
+    <div class="hero-title-wrapper">
+      <h1 class="hero-title">
+        <span>Double the Brilliance.</span><br>
+        <span>Double the Impact.</span>
+      </h1>
+    </div>
+    <p class="hero-subtitle">
+      A celebration of character, exceptional family lineage, and the unshakeable bond shared between brothers.
+    </p>
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+    </div>
+  </section>
 
-          <!-- Picture 2 (Main verbatim reference) -->
-          <div class="image-3d-card card-2">
-            <img src="image_2.jpg" alt="Two Nephews Portrait" />
-            <div class="card-indicator">II // III</div>
-          </div>
-
-          <!-- Picture 3 -->
-          <div class="image-3d-card card-3">
-            <img src="image_3.jpg" alt="Dynamic Portrait Three" />
-            <div class="card-indicator">III // III</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 3: Deep Black Message Reveal Block -->
-    <section class="message-sec">
-      <div class="message-content">
-        <h2 class="reveal-el message-headline">The Blueprint of Brotherhood</h2>
-
-        <div class="gold-divider reveal-el"></div>
-
-        <div class="reveal-el message-body">
-          <p>
-            There is an undeniable energy in how you two command a room. You do
-            not merely occupy space; you elevate it. That presence—distinct on
-            its own, yet amplified tenfold when you stand side-by-side—is rare.
-            It is the signature of a bond built on looking out for one another
-            and challenging each other to rise.
-          </p>
-          <p>
-            This depth of character is no accident. It is a direct reflection of
-            the solid foundation laid down by your
-            <strong>exceptional parents</strong>, whose structural values,
-            endless guidance, and dedication have forged your path. In your
-            stride, you also carry the enduring wisdom and grace of your
-            <strong>grandmother</strong>—the family's anchor, whose gentle power
-            and deep devotion continue to flow through your legacy.
-          </p>
-          <p>
-            As you both look toward the horizons ahead, stand tall in the
-            knowledge that your potential is limitless. Step forward with
-            unyielding hope, knowing that you possess the intelligence, the
-            synergy, and the backing of those who love you to build an unmatched
-            future on your own terms.
-          </p>
+  <!-- Section 2: Sticky Visual Arena (Handles 3D transition of 3 images) -->
+  <section class="visual-sec">
+    <div class="sticky-wrapper">
+      <div class="perspective-parent">
+        
+        <!-- Picture 1 -->
+        <div class="image-3d-card card-1">
+          <img src="image_1.png" alt="Dynamic Portrait One">
+          <div class="card-indicator">I // III</div>
         </div>
 
-        <div class="reveal-el message-signoff">
-          <span class="signoff-tag">Always in your corner,</span>
-          <span class="signoff-signature">Uncle Sammy</span>
+        <!-- Picture 2 (Main verbatim reference) -->
+        <div class="image-3d-card card-2">
+          <img src="image_2.png" alt="Two Nephews Portrait">
+          <div class="card-indicator">II // III</div>
         </div>
+
+        <!-- Picture 3 -->
+        <div class="image-3d-card card-3">
+          <img src="image_3.png" alt="Dynamic Portrait Three">
+          <div class="card-indicator">III // III</div>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Script containing animation controls -->
-    <script>
-      gsap.registerPlugin(ScrollTrigger);
+  <!-- Section 3: Deep Black Message Reveal Block -->
+  <section class="message-sec">
+    <div class="message-content">
+      <h2 class="reveal-el message-headline">The Blueprint of Brotherhood</h2>
+      
+      <div class="gold-divider reveal-el"></div>
 
-      window.addEventListener("DOMContentLoaded", () => {
-        // 1. INTRO HERO ENTRANCE
-        const introTl = gsap.timeline();
-        introTl
-          .from(".hero-title span", {
-            yPercent: 100,
-            opacity: 0,
-            duration: 1.2,
-            stagger: 0.15,
-            ease: "power4.out",
-          })
-          .from(
-            ".hero-subtitle",
-            {
-              y: 20,
-              opacity: 0,
-              duration: 1,
-              ease: "power3.out",
-            },
-            "-=0.6",
-          )
-          .from(
-            ".scroll-indicator",
-            {
-              opacity: 0,
-              duration: 0.8,
-            },
-            "-=0.4",
-          );
+      <div class="reveal-el message-body">
+        <p>
+          There is an undeniable energy in how you two command a room. You do not merely occupy space; you elevate it. That presence—distinct on its own, yet amplified tenfold when you stand side-by-side—is rare. It is the signature of a bond built on looking out for one another and challenging each other to rise.
+        </p>
+        <p>
+          This depth of character is no accident. It is a direct reflection of the solid foundation laid down by your <strong>exceptional parents</strong>, whose structural values, endless guidance, and dedication have forged your path. In your stride, you also carry the enduring wisdom and grace of your <strong>grandmother</strong>—the family's anchor, whose gentle power and deep devotion continue to flow through your legacy.
+        </p>
+        <p>
+          As you both look toward the horizons ahead, stand tall in the knowledge that your potential is limitless. Step forward with unyielding hope, knowing that you possess the intelligence, the synergy, and the backing of those who love you to build an unmatched future on your own terms.
+        </p>
+      </div>
 
-        // 2. 3D MATRIX TRANSLATION ON VIEWPORT SCROLL FOR 3 CARDS
-        const cards = gsap.utils.toArray(".image-3d-card");
+      <div class="reveal-el message-signoff">
+        <span class="signoff-tag">Always in your corner,</span>
+        <span class="signoff-signature">Uncle Sammy</span>
+      </div>
+    </div>
+  </section>
 
-        // Initialize cards at starting state
-        cards.forEach((card) => {
-          gsap.set(card, {
-            scale: 0.85,
-            rotationX: 35,
-            rotationY: -15,
-            opacity: 0,
-            z: -100,
-            pointerEvents: "none",
-          });
-        });
+  <!-- Script containing animation controls -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
 
-        // Construct scroll timeline sequentially
-        const mainScrollTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".visual-sec",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1,
-            pin: ".sticky-wrapper",
-            anticipatePin: 1,
-          },
-        });
+    window.addEventListener("DOMContentLoaded", () => {
+      
+      // 1. INTRO HERO ENTRANCE
+      const introTl = gsap.timeline();
+      introTl.from(".hero-title span", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: "power4.out"
+      })
+      .from(".hero-subtitle", {
+        y: 20,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+      }, "-=0.6")
+      .from(".scroll-indicator", {
+        opacity: 0,
+        duration: 0.8
+      }, "-=0.4");
 
-        // Sequence animation pattern for each card
-        cards.forEach((card, i) => {
-          mainScrollTl
-            .to(card, {
-              scale: 1.1,
-              rotationX: 0,
-              rotationY: 0,
-              opacity: 1,
-              z: 0,
-              pointerEvents: "auto",
-              duration: 1,
-              ease: "power2.inOut",
-            })
-            .to(
-              card,
-              {
-                scale: 0.85,
-                rotationX: -35,
-                rotationY: 15,
-                opacity: 0,
-                z: -100,
-                pointerEvents: "none",
-                duration: 1,
-                ease: "power2.inOut",
-              },
-              "+=0.3",
-            ); // Brief pause while card is active in center
-        });
-
-        // 3. FULL-VIEWPORT COLOR TRANSITION TO DEEP BLACK
-        gsap.to("body", {
-          scrollTrigger: {
-            trigger: ".message-sec",
-            start: "top 80%",
-            end: "top 30%",
-            scrub: true,
-          },
-          backgroundColor: "var(--bg-dark)",
-          color: "var(--text-light)",
-          duration: 1,
-        });
-
-        // Update header elements color compatibility on background transition
-        gsap.to([".brand-logo", ".brand-meta"], {
-          scrollTrigger: {
-            trigger: ".message-sec",
-            start: "top 80%",
-            end: "top 30%",
-            scrub: true,
-          },
-          color: "var(--text-light)",
-          duration: 1,
-        });
-
-        // 4. DRAMATIC DEDICATION REVEALS
-        gsap.utils.toArray(".reveal-el").forEach((element) => {
-          gsap.from(element, {
-            scrollTrigger: {
-              trigger: element,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-            opacity: 0,
-            y: 40,
-            duration: 1.2,
-            ease: "power3.out",
-          });
+      // 2. 3D MATRIX TRANSLATION ON VIEWPORT SCROLL FOR 3 CARDS
+      const cards = gsap.utils.toArray(".image-3d-card");
+      
+      // Initialize cards at starting state
+      cards.forEach((card) => {
+        gsap.set(card, {
+          scale: 0.85,
+          rotationX: 35,
+          rotationY: -15,
+          opacity: 0,
+          z: -100,
+          pointerEvents: "none"
         });
       });
-    </script>
-  </body>
+
+      // Construct scroll timeline sequentially
+      const mainScrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".visual-sec",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1, 
+          pin: ".sticky-wrapper",
+          anticipatePin: 1
+        }
+      });
+
+      // Sequence animation pattern for each card
+      cards.forEach((card, i) => {
+        mainScrollTl.to(card, {
+          scale: 1.1,
+          rotationX: 0,
+          rotationY: 0,
+          opacity: 1,
+          z: 0,
+          pointerEvents: "auto",
+          duration: 1,
+          ease: "power2.inOut"
+        })
+        .to(card, {
+          scale: 0.85,
+          rotationX: -35,
+          rotationY: 15,
+          opacity: 0,
+          z: -100,
+          pointerEvents: "none",
+          duration: 1,
+          ease: "power2.inOut"
+        }, "+=0.3"); // Brief pause while card is active in center
+      });
+
+      // 3. FULL-VIEWPORT COLOR TRANSITION TO DEEP BLACK
+      gsap.to("body", {
+        scrollTrigger: {
+          trigger: ".message-sec",
+          start: "top 80%",
+          end: "top 30%",
+          scrub: true
+        },
+        backgroundColor: "var(--bg-dark)",
+        color: "var(--text-light)",
+        duration: 1
+      });
+
+      // Update header elements color compatibility on background transition
+      gsap.to([".brand-logo", ".brand-meta"], {
+        scrollTrigger: {
+          trigger: ".message-sec",
+          start: "top 80%",
+          end: "top 30%",
+          scrub: true
+        },
+        color: "var(--text-light)",
+        duration: 1
+      });
+
+      // 4. DRAMATIC DEDICATION REVEALS
+      gsap.utils.toArray(".reveal-el").forEach((element) => {
+        gsap.from(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: 40,
+          duration: 1.2,
+          ease: "power3.out"
+        });
+      });
+      
+    });
+  </script>
+</body>
 </html>
